@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["headline", "caption", "hashtags"],
+  "properties": {
+    "headline": {"type": "string"},
+    "caption": {"type": "string"},
+    "hashtags": {"type": "string"}
+  }
+}

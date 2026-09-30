@@ -1,0 +1,11 @@
+{
+  "instagram_app_id": "",
+  "instagram_app_secret": "",
+  "instagram_access_token": "",
+  "instagram_user_id": "",
+  "instagram_token_expires_at": "",
+  "upload_password": "",
+  "server_base_url": "https://www.starseven.at",
+  "redirect_uri": "",
+  "listen_port": 8765
+}

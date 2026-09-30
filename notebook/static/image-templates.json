@@ -1,0 +1,307 @@
+{
+  "source": "https://openai.com/academy/image-generation/",
+  "styles": [
+    {
+      "id": "none",
+      "label": "Farben frei wählen lassen",
+      "colors": [],
+      "instruction": "Lege keine feste Farbpalette fest. Wähle Farben, die zum Inhalt und zum beschriebenen Bildaufbau passen, mit gutem Kontrast für lesbaren Text.",
+      "visual_instruction": "Lege keine feste Farbpalette fest. Lass Licht, Umgebung und Motiv die natürliche Farbigkeit bestimmen."
+    },
+    {
+      "id": "warm",
+      "label": "Sanft & warm",
+      "colors": [
+        "#f5efe2",
+        "#bd7058",
+        "#2b2925"
+      ],
+      "instruction": "Verwende Elfenbein als warme Grundfläche, Terrakotta sparsam als Akzent und dunkles Anthrazit für lesbaren Text. Eine dezente Papierstruktur ist möglich; behalte den zuvor beschriebenen Bildaufbau bei.",
+      "visual_instruction": "Lass warme Creme- und Terrakotta-Töne in Licht, Umgebung oder kleinen Gegenständen anklingen. Die Szene soll natürlich wirken, ohne künstlichen Farbfilter."
+    },
+    {
+      "id": "nature",
+      "label": "Natürlich & frisch",
+      "colors": [
+        "#f2eee2",
+        "#738767",
+        "#333a30"
+      ],
+      "instruction": "Nutze eine helle Cremefläche, zurückhaltendes Salbeigrün und dunkles Oliv für Kontrast. Behalte den zuvor beschriebenen Bildaufbau bei.",
+      "visual_instruction": "Wähle eine natürliche, frische Farbigkeit mit Creme, Salbeigrün und dunklem Oliv in der Umgebung. Halte Licht und Materialien glaubwürdig."
+    },
+    {
+      "id": "bold",
+      "label": "Klar & markant",
+      "colors": [
+        "#f5efe5",
+        "#d8a833",
+        "#27292b"
+      ],
+      "instruction": "Gestalte mit einer hellen Papierfläche und kräftigem Anthrazit. Setze Sonnengelb nur an wenigen wichtigen Stellen ein. Behalte den zuvor beschriebenen Bildaufbau bei.",
+      "visual_instruction": "Nutze klare Hell-Dunkel-Kontraste und höchstens einen kleinen sonnengelben Akzent in der Szene. Die Komposition darf markant sein, aber nicht wie Werbung wirken."
+    },
+    {
+      "id": "pastel",
+      "label": "Pastell & lebendig",
+      "colors": [
+        "#f9e9e7",
+        "#b39acb",
+        "#493647"
+      ],
+      "instruction": "Verwende Puderrosa als Grundton, sanftes Flieder für einzelne Akzente und dunkles Pflaume für lesbare Schrift. Behalte den zuvor beschriebenen Bildaufbau bei.",
+      "visual_instruction": "Lass Puderrosa und sanftes Flieder in Licht, Kleidung oder Umgebung auftauchen. Die Stimmung ist freundlich und lebendig, ohne künstliche Bonbonfarben."
+    },
+    {
+      "id": "evening",
+      "label": "Dunkel & elegant",
+      "colors": [
+        "#1f2b3d",
+        "#c59d6a",
+        "#f7f0e3"
+      ],
+      "instruction": "Nutze tiefes Nachtblau als ruhige Grundfläche, sparsame kupferfarbene Akzente und helle cremefarbene Schrift. Erhalte die zuvor beschriebenen fotografischen Flächen und den Bildaufbau.",
+      "visual_instruction": "Nutze eine ruhige, leicht dunkle Stimmung mit Nachtblau und wenigen warmen Kupfertönen. Personen und wichtige Handlungen bleiben trotz der Abendstimmung gut erkennbar."
+    },
+    {
+      "id": "custom",
+      "label": "Eigene Mischung",
+      "colors": [
+        "#f5efe2",
+        "#bd7058",
+        "#2b2925"
+      ],
+      "instruction": ""
+    }
+  ],
+  "custom_options": {
+    "background": [
+      {"id": "ivory", "label": "Elfenbein", "color": "#f5efe2", "text": "#2b2925"},
+      {"id": "sand", "label": "Sand", "color": "#e8d5b9", "text": "#302a27"},
+      {"id": "blush", "label": "Puderrosa", "color": "#f9e3e4", "text": "#42313b"},
+      {"id": "mint", "label": "Sanftes Mint", "color": "#e5eee8", "text": "#2d3d36"},
+      {"id": "midnight", "label": "Nachtblau", "color": "#1f2b3d", "text": "#f7f0e3"},
+      {"id": "charcoal", "label": "Anthrazit", "color": "#252629", "text": "#f7f0e3"},
+      {"id": "peach", "label": "Pfirsich", "color": "#f7dfcf", "text": "#4a302b"},
+      {"id": "lavender", "label": "Lavendel", "color": "#ebe4f2", "text": "#3f344b"},
+      {"id": "powder", "label": "Puderblau", "color": "#dfeaf0", "text": "#29414c"},
+      {"id": "forest", "label": "Waldgrün", "color": "#263f36", "text": "#f7f1e7"},
+      {"id": "plum", "label": "Pflaume", "color": "#493044", "text": "#fff3ec"}
+    ],
+    "accent": [
+      {"id": "terracotta", "label": "Terrakotta", "color": "#bd7058"},
+      {"id": "coral", "label": "Koralle", "color": "#e57069"},
+      {"id": "sage", "label": "Salbei", "color": "#738767"},
+      {"id": "sun", "label": "Sonnengelb", "color": "#d8a833"},
+      {"id": "lilac", "label": "Flieder", "color": "#a68ec7"},
+      {"id": "sky", "label": "Himmelblau", "color": "#6c9fc4"},
+      {"id": "berry", "label": "Beere", "color": "#a54b65"},
+      {"id": "teal", "label": "Petrol", "color": "#347d7a"},
+      {"id": "cobalt", "label": "Kobaltblau", "color": "#4765ac"},
+      {"id": "peach", "label": "Apricot", "color": "#eb9c70"},
+      {"id": "bronze", "label": "Bronze", "color": "#ac8050"}
+    ],
+    "layout": [
+      {"id": "editorial", "label": "Magazin & ruhig", "instruction": "Ordne die Elemente wie auf einer ruhigen Magazinseite an, mit einer klaren Blickführung und viel freier Fläche.", "visual_instruction": "Wähle einen ruhigen Bildausschnitt mit großzügigem Raum um das Hauptmotiv."},
+      {"id": "graphic", "label": "Grafisch & klar", "instruction": "Nutze ein geordnetes Raster, deutliche Ausrichtung und wenige präzise geometrische Formen.", "visual_instruction": "Ordne die sichtbaren Dinge klar und übersichtlich im Bild an, ohne die Szene gestellt wirken zu lassen."},
+      {"id": "playful", "label": "Weich & lebendig", "instruction": "Arbeite mit weichen Formen, einer lockeren Anordnung und einem freundlichen Rhythmus, ohne die Lesbarkeit zu verlieren.", "visual_instruction": "Wähle einen lockeren, lebendigen Ausschnitt mit natürlichen kleinen Unregelmäßigkeiten."},
+      {"id": "dynamic", "label": "Dynamisch & asymmetrisch", "instruction": "Setze den Blickfang leicht außerhalb der Mitte und arbeite mit einer spannenden Asymmetrie. Halte Text und wichtige Details dennoch frei und gut lesbar.", "visual_instruction": "Setze die Hauptperson oder Handlung leicht außerhalb der Mitte; der Blick folgt einer natürlichen Bewegung durch die Szene."}
+    ]
+  },
+  "templates": [
+    {
+      "id": "motivation",
+      "label": "Motivationsposter",
+      "preview": "/templates/motivation.png",
+      "description": "Ein kurzer Satz als Blickfang, ohne zusätzliche Floskeln.",
+      "fields": [
+        {
+          "id": "statement",
+          "label": "Dein Satz fürs Poster",
+          "placeholder": "Zum Beispiel: Heute zählt auch der kleine Schritt"
+        },
+        {
+          "id": "motif",
+          "label": "Passendes Motiv (optional)",
+          "placeholder": "Zum Beispiel: Laufschuhe an der Tür",
+          "optional": true
+        }
+      ],
+      "prompt": "Erstelle ein Motivationsposter für Instagram im Format {format} als hochwertige flächige Illustration, nicht als Foto. Komposition: oben ein großer, ruhiger Textbereich mit dem einzigen Satz „{statement}“ in kräftiger, kontrastreicher Schrift; darunter eine einfache Landschaft aus weichen Hügeln, einem geschwungenen Weg und einer kleinen Sonne. Integriere {motif} als vereinfachtes Motiv in diese untere Bildhälfte, ohne den Satz zu verdecken. Wenn das Motiv nicht zur Landschaft passt, ersetze nur die Landschaftsdetails, nicht die klare Zweiteilung. {style} Halte den Text auf einem Handy lesbar. Keine weiteren Wörter, Zitate, Logos oder Wasserzeichen."
+    },
+    {
+      "id": "infographic",
+      "label": "Infografik · 3 Punkte",
+      "preview": "/templates/infographic.png",
+      "style_previews": {"evening": "/templates/infographic-evening.png"},
+      "description": "Drei Aussagen als elegante Magazin-Grafik.",
+      "fields": [
+        {
+          "id": "title",
+          "label": "Überschrift",
+          "placeholder": "Zum Beispiel: Kleine Pausen im Familienalltag"
+        },
+        {
+          "id": "point1",
+          "label": "Punkt 1",
+          "placeholder": "Deine erste kurze Aussage"
+        },
+        {
+          "id": "point2",
+          "label": "Punkt 2",
+          "placeholder": "Deine zweite kurze Aussage"
+        },
+        {
+          "id": "point3",
+          "label": "Punkt 3",
+          "placeholder": "Deine dritte kurze Aussage"
+        }
+      ],
+      "prompt": "Erstelle eine visuelle Infografik für Instagram im Format {format}, aufgebaut wie eine fotografische Magazinseite. Der Bildaufbau ist entscheidend: Im oberen Viertel steht groß die Überschrift „{title}“ in eleganter Serifenschrift. Darunter liegen genau drei breite, waagerechte Fotostreifen übereinander, mit schmalen freien Zwischenräumen. Jeder Streifen verbindet links eine gut lesbare Textfläche und rechts ein zur jeweiligen Aussage passendes, glaubwürdiges Foto aus Alltag, Natur oder Bewegung: Streifen 1 „{point1}“, Streifen 2 „{point2}“, Streifen 3 „{point3}“. Die drei Fotos sind ebenso wichtig wie die Schrift; erstelle ausdrücklich kein reines Textplakat und keine drei bloßen Textkarten. Falls ein Satz länger ist, gib seiner Textfläche mehr Breite, ohne den Fotostreifen zu entfernen. {style} Achte auf Abstand und Kontrast für die Ansicht am Handy. Übernimm die drei Aussagen genau; erfinde keine Fakten, Zahlen oder weitere Wörter. Keine Logos oder Wasserzeichen."
+    },
+    {
+      "id": "workout",
+      "label": "Workout-Plan",
+      "preview": "/templates/workout.png",
+      "description": "Ein klarer Plan mit deinen eigenen Übungen und Werten.",
+      "fields": [
+        {
+          "id": "title",
+          "label": "Titel des Plans",
+          "placeholder": "Zum Beispiel: Mein Wochenplan"
+        },
+        {
+          "id": "row1",
+          "label": "Erste Planzeile",
+          "placeholder": "Zum Beispiel: Montag · Mobilität · 15 Min."
+        },
+        {
+          "id": "row2",
+          "label": "Zweite Planzeile",
+          "placeholder": "Zum Beispiel: Mittwoch · Spaziergang · 30 Min."
+        },
+        {
+          "id": "row3",
+          "label": "Dritte Planzeile (optional)",
+          "placeholder": "Nur wenn du eine dritte Einheit möchtest",
+          "optional": true
+        }
+      ],
+      "prompt": "Erstelle einen Workout-Plan für Instagram im Format {format} als hochwertige redaktionelle Bildseite. Komposition: Ganz oben steht groß der Titel „{title}“ in eleganter Serifenschrift. Darunter bildet jede angegebene Planzeile einen eigenen breiten horizontalen Abschnitt; feine Linien trennen die Abschnitte. Kombiniere in jedem Abschnitt den exakt angegebenen Text mit einem großen, passend zum genannten Körperbereich oder zur genannten Aktivität ausgewählten Fotomotiv einer erwachsenen Person in Bewegung. Ordne Foto und Text von Abschnitt zu Abschnitt abwechselnd links und rechts an. Die ersten zwei Texte lauten in dieser Reihenfolge „{row1}“ und „{row2}“. {row3} Verwende genau so viele Abschnitte wie angegebene Planzeilen; keine leeren Wochentagsfelder oder zusätzlichen Übungen. {style} Halte Schrift und Fotos auf dem Handy gut erkennbar. Erfinde keine zusätzlichen Zeiten, Wirkungen oder Versprechen. Keine weiteren Wörter, Logos oder Wasserzeichen."
+    },
+    {
+      "id": "everyday",
+      "label": "Natürliche Alltagsszene",
+      "kind": "visual",
+      "preview": "/templates/everyday.png",
+      "description": "Ein warmes, glaubwürdiges Foto ohne Text.",
+      "fields": [
+        {
+          "id": "scene",
+          "label": "Welche Szene möchtest du zeigen?",
+          "placeholder": "Zum Beispiel: Mutter bindet im Flur die Schuhe ihres Kindes"
+        }
+      ],
+      "prompt": "Erzeuge ein glaubwürdiges redaktionelles Foto für Instagram im Format {format}. Zeige diese konkrete Alltagsszene: {scene}. Komposition: ein ruhiger, naher Ausschnitt mit einer klaren Handlung oder einem klaren Gegenstand im Vordergrund; weiches Fensterlicht von der Seite; im Hintergrund nur wenige unscharfe Details eines bewohnten Raums. Falls die Szene Personen erfordert, zeige sie bei der beschriebenen Handlung statt beim Blick in die Kamera. Natürliche Materialien und kleine Gebrauchsspuren sollen sichtbar bleiben. {style} Keine Schrift, Logos, Wasserzeichen oder Beauty-Retusche. Bilde ohne Referenz keine bestimmte reale Person nach."
+    },
+    {
+      "id": "editorial",
+      "label": "Editorial-Poster",
+      "preview": "/templates/editorial.png",
+      "description": "Foto und große Schrift wie auf einer Magazinseite.",
+      "fields": [
+        {
+          "id": "title",
+          "label": "Text auf dem Poster",
+          "placeholder": "Zum Beispiel: Mehr Raum für das Wesentliche"
+        },
+        {
+          "id": "motif",
+          "label": "Was soll zu sehen sein?",
+          "placeholder": "Zum Beispiel: ein ruhiger Küchentisch am Morgen"
+        },
+        {
+          "id": "subtitle",
+          "label": "Kleine Unterzeile (optional)",
+          "placeholder": "Nur wenn du eine zweite Zeile möchtest",
+          "optional": true
+        }
+      ],
+      "prompt": "Gestalte ein Editorial-Poster für Instagram im Format {format} wie eine hochwertige Magazin-Doppelseite im Hochformat. Teile das Bild in zwei große senkrechte Bereiche: links ein atmosphärisches, detailreiches Foto von {motif}, rechts eine ruhige freie Fläche mit der großen Überschrift „{title}“ in eleganter schwarzer Serifenschrift. Das Motiv darf leicht über die Mittellinie ragen, darf aber keinen Buchstaben verdecken. {subtitle} Setze keine weiteren grafischen Kästen oder Piktogramme ein. {style} Die rechte Textfläche bleibt auch auf einem Handy lesbar. Keine zusätzlichen Wörter, Logos oder Wasserzeichen."
+    },
+    {
+      "id": "checklist",
+      "label": "Checkliste",
+      "preview": "/templates/checklist.png",
+      "description": "Eine lesbare Liste mit deinen konkreten Punkten.",
+      "fields": [
+        {
+          "id": "title",
+          "label": "Überschrift der Liste",
+          "placeholder": "Zum Beispiel: Unsere kleine Abendroutine"
+        },
+        {
+          "id": "point1",
+          "label": "Erster Listenpunkt",
+          "placeholder": "Dein erster konkreter Punkt"
+        },
+        {
+          "id": "point2",
+          "label": "Zweiter Listenpunkt",
+          "placeholder": "Dein zweiter konkreter Punkt"
+        },
+        {
+          "id": "point3",
+          "label": "Dritter Listenpunkt",
+          "placeholder": "Dein dritter konkrete Punkt"
+        }
+      ],
+      "prompt": "Erstelle eine Checkliste für Instagram im Format {format} wie eine ruhige redaktionelle Magazinseite. Komposition: oben eine sehr große, gut lesbare Serif-Überschrift „{title}“. Darunter links genau drei weit auseinander gesetzte Listenzeilen, jede mit einem dünn umrandeten leeren Kreis statt eines bunten Icons: „{point1}“, „{point2}“, „{point3}“. Rechts unten zeigt ein einziges, zum Thema passendes Foto ein reales Alltagsdetail; es füllt ungefähr ein Drittel des Motivs und verdeckt keine Zeile. Passe die Breite der Textspalte an längere Punkte an. {style} Keine Word-Art, 3D-Schrift, starken Schatten oder zusätzlichen Tipps. Keine weiteren Wörter, Logos oder Wasserzeichen."
+    },
+    {
+      "id": "family",
+      "label": "Familienmoment",
+      "kind": "visual",
+      "preview": "/templates/family.png",
+      "description": "Eine warme Illustration deiner Familienszene. Beschreibe, wer dabei ist, was passiert und wo ihr seid – drinnen oder draußen.",
+      "fields": [
+        {
+          "id": "scene",
+          "label": "Welchen Familienmoment möchtest du zeigen?",
+          "placeholder": "Zum Beispiel: Eine Mutter und ihr Kind sammeln im Park bunte Blätter"
+        }
+      ],
+      "prompt": "Erzeuge eine warmherzige redaktionelle Illustration für Instagram im Format {format}. Die Szene lautet: {scene}. Übernimm die beschriebenen Personen, ihre Handlung und den genannten Ort. Innenräume und Außenorte sind gleichermaßen möglich. Wenn Ort, Tageszeit oder einzelne Personen nicht näher beschrieben sind, wähle zurückhaltende, zur Handlung passende Details. Komposition: Zeige die gemeinsame Handlung als klaren Mittelpunkt auf Augenhöhe; Körperhaltung, Blickrichtung und verwendete Gegenstände müssen zu dieser Handlung passen. Die Umgebung macht den Ort erkennbar, bleibt aber visuell ruhiger als die Personen. Nutze weiche handgemalte Gouache-Texturen, sichtbare Pinselspuren und glaubwürdiges Licht passend zum Ort und zur Tageszeit; keine Fotorealistik. Stelle Kinder respektvoll und altersgerecht dar. {style} Keine Schrift, Logos, Wasserzeichen oder gestellte Werbefamilien."
+    },
+    {
+      "id": "movement",
+      "label": "Bewegung im Alltag",
+      "kind": "visual",
+      "preview": "/templates/movement.png",
+      "description": "Fitness zwischen Alltag und Familie, ohne Leistungsdruck.",
+      "fields": [
+        {
+          "id": "scene",
+          "label": "Welche Bewegung möchtest du zeigen?",
+          "placeholder": "Zum Beispiel: Dehnen im Wohnzimmer, während Spielzeug herumliegt"
+        }
+      ],
+      "prompt": "Erzeuge ein natürliches redaktionelles Foto für Instagram im Format {format}. Zeige diese Bewegungsszene konkret: {scene}. Komposition: eine erwachsene Person in ganzer Figur während der Bewegung, seitlich oder leicht schräg aufgenommen; sie steht auf einer Matte oder einer zur Handlung passenden Fläche in einem echten Wohnraum. Weiches Tageslicht kommt durch ein Fenster, einzelne Alltagsgegenstände bleiben dezent im Hintergrund. Die Körperhaltung muss zur beschriebenen Bewegung passen und anatomisch plausibel sein. {style} Keine Vorher-Nachher-Inszenierung oder Fitnesswerbung. Keine Schrift, Logos oder Wasserzeichen."
+    },
+    {
+      "id": "couple",
+      "label": "Zeit zu zweit",
+      "kind": "visual",
+      "preview": "/templates/couple.png",
+      "description": "Ein natürliches Foto eines gemeinsamen Moments. Beschreibe die beiden Personen, ihre Handlung und den Ort – vom Spaziergang bis zum Alltag zu Hause.",
+      "fields": [
+        {
+          "id": "scene",
+          "label": "Welchen gemeinsamen Moment möchtest du zeigen?",
+          "placeholder": "Zum Beispiel: Zwei Erwachsene spazieren am See und reden miteinander"
+        }
+      ],
+      "prompt": "Erzeuge ein glaubwürdiges redaktionelles Foto für Instagram im Format {format}. Die Szene lautet: {scene}. Zeige die beiden erwachsenen Personen bei genau der beschriebenen gemeinsamen Handlung. Übernimm Angaben zu Aussehen, Kleidung, Ort und Tageszeit, sofern sie genannt werden. Innenräume und Außenorte sind gleichermaßen möglich; ergänze fehlende Angaben nur so, dass sie zur Szene passen. Komposition: Zeige beide Personen und genug von der Umgebung, um Handlung und Ort verständlich zu machen. Wähle den Bildausschnitt nach der Handlung: bei Bewegung mit sichtbarer Körperhaltung, bei einer kleinen gemeinsamen Tätigkeit näher an Händen und Gesichtern. Zeige passende Blickrichtungen und Handbewegungen; füge keine zusätzliche Haushaltstätigkeit oder romantische Geste hinzu. Verwende glaubwürdiges Licht passend zum beschriebenen Ort und zur Tageszeit, natürliche Hautstruktur und nachvollziehbare Alltagsdetails. {style} Die Personen sind mit ihrer Handlung beschäftigt und posieren nicht für die Kamera. Keine Schrift, Logos oder Wasserzeichen."
+    }
+  ]
+}

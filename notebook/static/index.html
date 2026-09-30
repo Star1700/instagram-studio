@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio · Instagram</title>
+  <link rel="stylesheet" href="/app.css?v=21">
+</head>
+<body>
+  <header class="masthead shell">
+    <a class="brand" href="/" aria-label="Studio Startseite"><span>S</span> Studio</a>
+    <div class="connection"><label class="sr-only" for="accountSelect">Instagram-Konto</label><select id="accountSelect" hidden></select><i id="connectionDot"></i><span id="connectionText">Verbindung wird geprüft</span><button id="connectButton" class="link-button">Konten verwalten</button></div>
+  </header>
+
+  <main class="shell page">
+    <section class="hero">
+      <p class="eyebrow">Instagram Feed Studio</p>
+      <h1>Von der Idee zum fertigen Beitrag.</h1>
+      <p>Text, Bilder und Videos bleiben in deiner Hand. Entwürfe werden automatisch auf diesem Notebook gespeichert.</p>
+    </section>
+
+    <div id="errorBanner" class="banner error" role="alert" hidden></div>
+    <div id="successBanner" class="banner success" role="status" hidden></div>
+
+    <details id="settingsPanel" class="card settings-panel">
+      <summary id="settingsTitle">Dein Schreibstil</summary>
+      <p id="welcomeNote">Wähle eine Stilvorlage und beschreibe kurz dein Konto.</p>
+      <label for="preset">Schreibprofil</label><select id="preset"><option value="">Eigene Einstellungen</option></select>
+      <p class="quiet">Deine gespeicherten Schreibprofile stehen dir bei allen Instagram-Konten auf diesem PC zur Verfügung.</p>
+      <div class="settings-grid">
+        <label class="wide">Worum geht es auf deinem Konto?<textarea id="profileNiche" rows="2" placeholder="Zum Beispiel: Ehrlicher Alltag als Mama, für Eltern mit wenig Zeit"></textarea><small class="field-help">Beschreibt dein Konto. Deine Idee für den heutigen Beitrag hat Vorrang.</small></label>
+        <label>Wie soll es klingen?<select id="tonePreset"><option value="">Eigene Beschreibung …</option></select></label>
+        <label id="customToneLabel">Dein Ton in eigenen Worten<input id="profileTone" placeholder="Zum Beispiel: warm, ehrlich, mit trockenem Humor"></label>
+      </div>
+      <details class="preference-details"><summary>Sprache und Feinheiten <span class="optional">optional</span></summary>
+        <div class="settings-grid">
+          <label>Sprache<select id="profileLanguage"><option>Deutsch</option><option>Englisch</option></select></label>
+          <label>Emojis<select id="profileEmoji"><option>Keine Emojis</option><option selected>Wenige Emojis</option><option>Einige Emojis</option><option>Emojis im Überfluss</option></select></label>
+          <label>Das soll Studio vermeiden<textarea id="profileAvoid" rows="2"></textarea></label>
+          <label>Hashtag-Stil<input id="profileHashtags" placeholder="Zum Beispiel: 3 bis 5, deutsch"></label>
+        </div>
+      </details>
+      <details class="preference-details"><summary>Text-KI einstellen</summary>
+        <div class="settings-grid"><label>Codex-Modell<select id="modelSelect"><option value="">Codex-Standard</option></select></label><label>Denkaufwand<select id="effortSelect"></select></label></div>
+        <p class="quiet">Die Modellliste stammt aus deinem angemeldeten Codex und wird bei Änderungen dort aktualisiert. Standardmäßig verwendet Studio GPT-6.1-Sol mit hohem Denkaufwand, falls verfügbar. Fehlt es, verwendet Studio GPT-6-Sol oder ein anderes verfügbares Codex-Modell.</p>
+        <p id="systemCheck" class="quiet" role="status">Codex wird geprüft …</p>
+      </details>
+      <p id="profileSaveState" class="quiet" role="status">Änderungen werden automatisch für das ausgewählte Konto übernommen.</p>
+      <div class="save-profile-row"><label>Name deines Schreibprofils<input id="profileName" maxlength="80" placeholder="Zum Beispiel: Fitness oder Alltag als Mama"></label><button id="saveProfile" class="button dark">Profil speichern</button><button id="saveProfileCopy" class="button ghost" hidden>Als neues Profil speichern</button></div>
+    </details>
+
+    <details id="accountsPanel" class="card settings-panel">
+      <summary>Instagram-Konten</summary>
+      <p id="accountSetupNote" hidden>Für ein neues Konto: Lass dein Creator- oder Business-Konto vom App-Betreiber als Instagram-Tester eintragen. Öffne anschließend Instagram auf deinem PC im Browser und melde dich mit diesem Konto an. Gehe zu <strong>Einstellungen → Berechtigungen für Apps und Websites → Apps und Websites → Tester-Einladungen</strong> und nimm die Einladung für Studio an. Verwende dafür den Desktop-Browser, nicht die Instagram-App auf dem Handy. Danach kannst du das Konto hier verbinden.</p>
+      <p id="accountReadyNote" class="quiet">Dein Konto ist verbunden. Weitere Konten kannst du hier hinzufügen.</p>
+      <button id="showAccountSetup" class="link-button">Hinweise zum Verbinden eines weiteren Kontos</button>
+      <div class="primary-actions"><button id="addAccount" class="button primary">Instagram verbinden</button><button id="checkConnection" class="button ghost">Verbindung prüfen</button></div>
+      <p class="quiet">Dein Passwort gibst du nur bei Instagram ein.</p>
+      <p id="oauthProgress" role="status" hidden></p>
+      <a id="oauthLink" target="_blank" rel="noopener noreferrer" hidden>Instagram-Freigabe öffnen</a>
+    </details>
+
+    <section class="card composer" aria-labelledby="ideaHeading">
+      <div class="section-heading">
+        <div><span class="step">01</span><h2 id="ideaHeading">Die Idee</h2></div>
+        <span class="autosave" id="saveState">Lokal gespeichert</span>
+      </div>
+      <label for="idea">Was möchtest du heute erzählen?</label>
+      <textarea id="idea" rows="3" placeholder="Zum Beispiel: Ruhiger Neustart nach einer langen Trainingswoche"></textarea>
+      <div class="primary-actions">
+        <button id="generateAll" class="button primary">Text erzeugen</button>
+        <button id="newDraft" class="button ghost new-draft-trigger">Neuer Beitrag</button>
+      </div>
+      <div id="newDraftChoice" class="new-draft-choice" hidden><strong>Was soll mit diesem Entwurf passieren?</strong><p>Deine bisherigen Eingaben sind automatisch gespeichert.</p><div class="primary-actions"><button id="keepDraft" class="button dark">Entwurf behalten &amp; neu beginnen</button><button id="discardDraft" class="button ghost">Entwurf löschen &amp; neu beginnen</button><button id="cancelNewDraft" class="link-button">Abbrechen</button></div></div>
+      <details class="writing-guide">
+        <summary>So schreibt Studio</summary>
+        <p id="profileSummary" aria-live="polite"></p>
+        <small>Immer dabei: eine natürliche Instagram-Caption ohne erfundene Fakten oder Erlebnisse. Deine heutige Idee hat Vorrang vor dem Kontothema. Codex erhält nur deine Idee, vorhandene Texte und die Schreibvorgaben. Der Bild-Prompt bleibt bei der ChatGPT-Bildübergabe.</small>
+        <button id="editSettings" class="link-button">Schreibprofil ändern</button>
+        <small id="codexSettings">Modell und Denkaufwand folgen den Codex-Einstellungen dieses PCs.</small>
+        <details id="codexPromptDetails" class="codex-prompt-details"><summary>Genauen Prompt für „Text erzeugen“ ansehen</summary><button id="showCodexPrompt" class="button ghost">Aktuellen Prompt anzeigen</button><p id="codexPromptSettings" class="quiet"></p><pre id="codexPromptText" tabindex="0">Klicke auf „Aktuellen Prompt anzeigen“, um deine jetzigen Eingaben zu prüfen.</pre><small>Studio zeigt hier denselben Prompt, den der nächste Klick auf „Text erzeugen“ aus diesen Eingaben erstellt. Änderst du danach etwas, aktualisiere die Ansicht erneut.</small></details>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="textHeading">
+      <div class="section-heading">
+        <div><span class="step">02</span><h2 id="textHeading">Dein Text</h2></div>
+        <span class="quiet">Jedes Feld einzeln anpassbar</span>
+      </div>
+      <div id="headlineField" class="field-with-action">
+        <label for="headline">Überschrift auf dem Bild <span class="optional">optional</span></label>
+        <button class="mini-button regenerate" data-part="headline">Neu erzeugen</button>
+        <input id="headline" maxlength="160" placeholder="Kurze Überschrift fürs Bild">
+        <small id="headlineHelp" class="field-help">Leer lassen, wenn dein Bild bereits Text enthält. Sonst wird sie oben ins Bild gesetzt.</small>
+      </div>
+      <div class="field-with-action">
+        <label for="caption">Caption</label>
+        <button class="mini-button regenerate" data-part="caption">Neu erzeugen</button>
+        <textarea id="caption" rows="7" maxlength="2200" placeholder="Dein Beitragstext"></textarea>
+      </div>
+      <div class="field-with-action">
+        <label for="hashtags">Hashtags <span class="optional">optional</span></label>
+        <button class="mini-button regenerate" data-part="hashtags">Neu erzeugen</button>
+        <textarea id="hashtags" rows="2" placeholder="#training #alltag #erholung"></textarea>
+      </div>
+      <div id="altTextField" class="field-with-action">
+        <label for="altText">Alternativtext <span class="optional">optional</span></label>
+        <textarea id="altText" rows="3" maxlength="1000" placeholder="Beschreibe das Motiv für Screenreader"></textarea>
+        <small class="field-help">Beschreibe nur das tatsächlich gewählte Bild. Studio erzeugt hier keinen erfundenen Text.</small>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="visualHeading">
+      <div class="section-heading">
+        <div><span class="step">03</span><h2 id="visualHeading">Medien und Gestaltung</h2></div>
+        <div id="canvasControls" class="segmented" aria-label="Bildformat">
+          <label><input type="radio" name="canvas" value="portrait" checked><span>Porträt</span></label>
+          <label><input type="radio" name="canvas" value="square"><span>Quadrat</span></label>
+        </div>
+      </div>
+      <fieldset class="media-types"><legend>Was möchtest du teilen?</legend><div class="segmented">
+        <label><input type="radio" name="mediaType" value="image" checked><span>Ein Bild</span></label>
+        <label><input type="radio" name="mediaType" value="carousel"><span>Karussell</span></label>
+        <label><input type="radio" name="mediaType" value="video"><span>Video / Reel</span></label>
+      </div></fieldset>
+      <p id="mediaHelp" class="quiet">JPG, PNG oder WebP · bis 8 MB · passend zum gewählten Format zugeschnitten.</p>
+      <div class="preview-tools"><label class="switch-label"><input id="showOverlay" type="checkbox"> Instagram-Vorschau</label><label id="previewModeLabel" hidden>Ansicht<select id="previewMode"><option value="feed">Feed</option><option value="reel">Reel · 9:16</option></select></label></div>
+      <div id="mockup" class="mockup">
+        <div id="feedHeader" class="feed-header" hidden><span class="mock-avatar">S</span><strong class="mock-handle">dein_konto</strong><span>•••</span></div>
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Mediendatei auswählen">
+          <input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <div id="emptyPreview" class="empty-preview"><span class="upload-mark">＋</span><strong id="dropTitle">Bild hier ablegen</strong><small>oder klicken, um eine Datei auszuwählen</small></div>
+          <div id="mediaStage" class="media-stage" hidden><img id="preview" alt="Vorschau des gestalteten Beitrags" hidden><video id="videoPreview" controls playsinline preload="metadata" hidden></video>
+            <div id="reelOverlay" class="reel-overlay" aria-hidden="true" hidden><div class="zone-top">Reels <span>⌕</span></div><div class="zone-side">♡<br>♧<br>➤<br>•••</div><div class="safe-outline"></div><div class="zone-bottom"><strong class="mock-handle">dein_konto</strong><p id="reelCaption"></p><small>♫ Original-Audio</small></div></div>
+            <span id="carouselBadge" class="carousel-badge" hidden></span>
+            <button id="previousSlide" class="preview-arrow previous" type="button" aria-label="Vorheriges Karussellbild" hidden>‹</button><button id="nextSlide" class="preview-arrow next" type="button" aria-label="Nächstes Karussellbild" hidden>›</button>
+          </div>
+        </div>
+        <div id="feedFooter" class="feed-footer" hidden><div>♡　♧　➤ <span>♧</span></div><p><strong class="mock-handle">dein_konto</strong> <span id="feedCaption"></span></p></div>
+      </div>
+      <p id="overlayNote" class="quiet" hidden>Ungefähre Ansicht. Instagram kann je nach Handy, Caption und App-Version anders aussehen. Die Einblendungen werden nie mitgesendet.</p>
+      <div id="carouselItems" class="carousel-items" hidden></div>
+      <div class="visual-actions">
+        <button id="replaceImage" class="button ghost">Bild hinzufügen</button>
+        <button id="removeMedia" class="button ghost remove-media" hidden aria-label="Ausgewählte Mediendatei entfernen">🗑 Entfernen</button>
+        <label id="logoPicker" class="logo-picker"><span id="logoPickerText">Logo auswählen</span> <span class="optional">optional</span><input id="logoInput" type="file" accept="image/png,image/jpeg,image/webp"></label>
+      </div>
+      <div id="logoControls" class="logo-controls">
+        <label class="logo-toggle"><input id="useLogo" type="checkbox"> Logo auf diesem Beitrag verwenden</label>
+        <label class="logo-position">Position<select id="logoPosition"><option value="bottom_right">Unten rechts</option><option value="bottom_left">Unten links</option><option value="top_right">Oben rechts</option><option value="top_left">Oben links</option></select></label>
+        <small id="logoState" class="quiet">Noch kein Logo für dieses Instagram-Konto gespeichert.</small>
+      </div>
+      <section id="imageIdeaPanel" class="image-idea-panel" aria-labelledby="imageIdeaHeading">
+        <div class="image-idea-heading"><div><span class="image-idea-eyebrow">DEINE BILDWERKSTATT</span><h3 id="imageIdeaHeading">Bildidee für ChatGPT <span class="optional">optional</span></h3></div><span class="image-idea-mark" aria-hidden="true">✦</span></div>
+        <p class="quiet">Du hast noch kein Bild? Wähle eine Vorlage und fülle die kurzen Felder aus. Die Farbwelt kannst du festlegen, selbst mischen oder offenlassen.</p>
+        <label for="imageTemplate">Bildvorlage</label><select id="imageTemplate"><option value="">Eigener Prompt</option></select>
+        <div id="templateExample" class="template-example" hidden><img id="templatePreview" alt="" loading="lazy"><div><strong id="templateTitle"></strong><p id="templateDescription"></p><small>Beispiel für den Bildaufbau. Text, Motiv und deine Farbwahl können abweichen.</small></div></div>
+        <div id="templateInputs" hidden>
+          <div id="templateFields" class="template-fields"></div>
+          <fieldset class="style-choices"><legend>Farbwelt und Stil</legend><div id="imageStyles" class="image-styles"></div></fieldset>
+          <div id="imageCustomControls" class="image-custom-controls" hidden>
+            <div class="custom-style-fields"><label>Hintergrund<select id="customBackground"></select></label><label>Akzentfarbe<select id="customAccent"></select></label><label>Bildaufbau<select id="customLayout"></select></label></div>
+            <div id="customStyleSample" class="custom-style-sample" aria-label="Farbprobe für deine eigene Mischung"><span>FARBPROBE</span><strong>Deine Idee</strong><small>So wirken deine Farben zusammen</small></div>
+            <small class="quiet">Die Farbprobe zeigt die Kombination; das fertige KI-Bild kann davon abweichen.</small>
+            <div class="custom-style-save"><button id="saveCustomStyle" class="button ghost">Für neue Beiträge merken</button><span id="customStyleSaveState" class="quiet" role="status"></span></div>
+          </div>
+          <p id="templateValidation" class="field-help" role="status"></p>
+          <p id="templateTextNote" class="quiet">Bei fertigen Postern die zusätzliche Studio-Überschrift oben leer lassen, damit kein Text doppelt erscheint.</p>
+        </div>
+        <div class="prompt-details"><label for="imagePrompt">Dein Bild-Prompt <span class="optional">jederzeit anpassbar</span></label><textarea id="imagePrompt" rows="6" placeholder="Beschreibe dein gewünschtes Motiv, Licht und Stimmung"></textarea><small class="field-help">Die Vorlage füllt diesen Prompt automatisch. Du kannst ihn hier direkt ändern. Beim Klick auf „Bild in ChatGPT erstellen“ wird er kopiert; Referenzbilder hängst du dort selbst an.</small></div>
+        <div class="handoff-actions">
+          <button id="openChatGPT" class="button dark">Bild in ChatGPT erstellen <span>↗</span></button>
+          <button id="openReferences" class="button ghost">Referenzordner öffnen</button>
+        </div>
+        <details class="reference-settings"><summary>Referenzordner ändern</summary><label for="referenceFolder">Dein Ordner auf diesem PC</label><input id="referenceFolder"><div class="primary-actions"><button id="chooseReferences" class="button ghost">Ordner auswählen</button><button id="saveReferences" class="mini-button">Pfad speichern</button></div><small class="quiet">Der Ordner bleibt für alle Konten gespeichert. Studio lädt daraus nichts automatisch hoch.</small></details>
+        <a class="source-link" href="https://developers.openai.com/api/docs/guides/image-prompting" target="_blank" rel="noopener noreferrer">Vorlagen nach den Prompt-Prinzipien von OpenAI ↗</a>
+      </section>
+    </section>
+
+    <section class="card publish-card" aria-labelledby="publishHeading">
+      <div class="section-heading"><div><span class="step">04</span><h2 id="publishHeading">Veröffentlichen</h2></div><span class="phase-pill">Bereit</span></div>
+      <div class="publish-grid">
+        <button id="sendNow" class="button primary large">Jetzt senden</button>
+        <div class="schedule-control"><label class="sr-only" for="scheduleTime">Veröffentlichungszeit</label><input id="scheduleTime" type="datetime-local"><button id="schedulePost" class="button dark">Planen</button></div>
+      </div>
+      <p class="quiet phase-note">Geplante Beiträge werden zum gewählten Zeitpunkt automatisch veröffentlicht.</p>
+    </section>
+
+    <section class="activity" aria-labelledby="activityHeading">
+      <div class="section-heading"><div><span class="step">05</span><h2 id="activityHeading">Beiträge</h2></div><div class="primary-actions"><button class="button ghost new-draft-trigger">Neuer Beitrag</button><button id="refreshPosts" class="mini-button">Aktualisieren</button></div></div>
+      <div id="postList" class="post-list"><p class="empty-list">Noch keine Entwürfe.</p></div>
+    </section>
+  </main>
+
+  <footer class="shell"><span>Studio läuft nur auf diesem Notebook.</span><span>Der Online-Dienst verarbeitet geplante Beiträge.</span></footer>
+  <script src="/app.js?v=21"></script>
+</body>
+</html>
